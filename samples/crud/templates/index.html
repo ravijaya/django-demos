@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list of employees</title>
+</head>
+<body>
+<table cellspacing="5" cellpadding="5">
+    <caption> <a href="{%url 'add_employee' %}">:: Add Employees ::</a><br />
+    {% if messages %}
+        {% for mesg in messages %}
+            {{mesg}}
+        {% endfor %}
+        {% endif %}
+    </caption>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>age</th>
+        <th>department</th>
+        <th>designation</th>
+        <th>edit</th>
+        <th>delete</th>
+    </tr>
+    {% for employee in employees %}
+    <tr>
+        <td>{{ employee.id }}</td>
+        <td><a href="{% url 'view_employee' employee.id %}">{{ employee.name }}</a></td>
+        <td>{{ employee.age }}</td>
+        <td>{{ employee.department }}</td>
+        <td>{{ employee.designation }}</td>
+        <td>edit</td>
+        <td><a href="{% url 'delete_employee' employee.id %}">delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

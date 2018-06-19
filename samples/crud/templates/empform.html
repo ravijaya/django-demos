@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>:: add employee form ::</title>
+</head>
+<body>
+<form action="" method="post">
+{% csrf_token %}
+    name : <input type="text" name="name"> <br/>
+    age : <input type="text" name="age"> <br/>
+    gender : <input type="text" name="gender"> <br/>
+
+    department : <select name="department">
+    <option value="">--department--</option>
+    {% for department in departments %}
+    <option value="{{ department }}">{{ department }}</option>
+    {% endfor %}
+</select> <br />
+
+    designation : <select name="designation">
+    <option value="">--designation--</option>
+    {% for designation in designations %}
+    <option value="{{ designation }}">{{ designation }}</option>
+    {% endfor %}
+</select> <br>
+
+    <input type="reset" > &nbsp;&nbsp; <input type="submit">
+</form>
+</body>
+</html>
